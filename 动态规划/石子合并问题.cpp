@@ -21,12 +21,12 @@ void getMin()
         for(int i = 1; i <= n - r + 1; i++)
         {
             int j = i + r - 1;
-            //dp[i][i] = 0 ÕâÀïÐ´³öÀ´ÊÇÎªÁË·½±ãÀí½â
+            //dp[i][i] = 0 è¿™é‡Œå†™å‡ºæ¥æ˜¯ä¸ºäº†æ–¹ä¾¿ç†è§£
             dp[i][j] = dp[i][i] + dp[i+1][j] + sum[i][j];  
             s[i][j] = i;
             for(int k = i+1; k < j; k++)
             {
-                //±È½Ï²»Í¬¶ÏµãkµÄ Ê¯×Ó´ú¼Û´óÐ¡
+                //æ¯”è¾ƒä¸åŒæ–­ç‚¹kçš„ çŸ³å­ä»£ä»·å¤§å°
                 int temp = dp[i][k] + dp[k+1][j] + sum[i][k] + sum[k+1][j];
                 if(temp < dp[i][j])
                 {
@@ -44,8 +44,8 @@ void trackback(int i, int j)
         return ;
     trackback(i, s[i][j]);
     trackback(s[i][j] + 1, j);
-    cout<<"µÚ"<<num<< "²½ ";
-    cout<<"¼ÆËã A[" << i <<"," <<s[i][j];
+    cout<<"ç¬¬"<<num<< "æ­¥ ";
+    cout<<"è®¡ç®— A[" << i <<"," <<s[i][j];
     cout<<"] and A["<< (s[i][j] + 1) <<","<<j << "]"<<endl;
     num++;
 }
@@ -59,7 +59,7 @@ int main()
         scanf("%d", &p[i]);
         sum[i][i] = p[i];
     }
-    //¼ÇÂ¼µÚiµ½µÚjµÄ´ú¼Û
+    //è®°å½•ç¬¬iåˆ°ç¬¬jçš„ä»£ä»·
     for(int i = 1; i <= n; i++)
     {
         for(int j = i+1; j <= n; j++)
@@ -70,7 +70,7 @@ int main()
     getMin();
     
     /*
-    ´òÓ¡³ödp±í¸ñ
+    æ‰“å°å‡ºdpè¡¨æ ¼
     for(int i = 1; i <= n; i++)
     {
         for(int j = 1; j <= n; j++)
@@ -79,7 +79,7 @@ int main()
     }
     */
    trackback(1, n);
-   printf("×Ü´ú¼ÛµÄ×îÐ¡ÖµÎª: %d", dp[1][n]);
+   printf("æ€»ä»£ä»·çš„æœ€å°å€¼ä¸º: %d", dp[1][n]);
 }
 /*
 3 4 = 7
